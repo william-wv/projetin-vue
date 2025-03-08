@@ -1,0 +1,31 @@
+/* reset.css */
+@import './base.css';
+
+/* fonts */
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap');
+
+
+main{
+  padding: 35px 50px!important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btns-naveg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 25px 0 !important;
+}
+
+.btn-green{
+  background-color: green !important;
+  color: white;
+  padding: 5px !important;
+}
+
+.green{
+  color: var(--Green-primary);
+}

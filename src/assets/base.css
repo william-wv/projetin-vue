@@ -1,0 +1,46 @@
+
+:root {
+  --White-primary: #F5F5F5;
+  --Green-primary: 	#3B9B62;
+
+  --Black-100: #333333;
+  --Black-300: #1C1C1C;
+  --Black-600: #000000;
+
+  --Gray-300:#BDBDBD;
+  --Gray-500: #4F4F4F;
+  
+
+}
+*{
+  margin: 0 !important;
+  padding: 0 !important;
+  
+}
+
+li{
+  list-style: none;
+  cursor: pointer;
+}
+
+a{
+  color: --Black;
+  cursor: pointer;
+}
+
+main {
+  padding: 50px 170px;
+}
+
+h1,h2,h3,li,p,a {
+  font-family: "Baloo 2", sans-serif;
+  color: var(--Black);
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none !important; 
+  color: inherit !important; 
+}
+
+
