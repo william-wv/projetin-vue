@@ -45,8 +45,9 @@ function formatarMarketCap(valor) {
 
 <template>
   <div class="card cardStocks">
+    
     <div class="img__stocks"> 
-      <img :src="logo" :alt="name" width="50px">
+      <img :src="logo" :alt="`Logo da ação de ${name} (${stock})`" width="50px">
     </div>
     <div class="div-ul">
       <ul>
@@ -54,7 +55,8 @@ function formatarMarketCap(valor) {
         <li>{{ stock }}</li>
         <li>
           <span :class="{
-            green: sector === 'Finance'
+            green: sector === 'Finance',
+            blue: sector === 'Retail Trade'
           }">{{ sector }}</span> 
         </li>
         <li>{{ formatarMarketCap(market_cap)  }}</li>
@@ -71,6 +73,7 @@ function formatarMarketCap(valor) {
     margin: 10px !important;
     background-color: var(--Gray-300);
     border-radius: 20px 20px 10px 10px;
+    max-width: 250px;
   
   & img{
     width: 100%;

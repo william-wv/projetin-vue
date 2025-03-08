@@ -27,5 +27,8 @@ main{
 }
 
 .green{
-  color: var(--Green-primary);
+  color: var(--Green-primary) !important;
+}
+.blue {
+  color: blue;
 }
