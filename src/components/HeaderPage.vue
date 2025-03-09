@@ -58,12 +58,14 @@ export default {
             </router-link>
           </li>
           <li @click="closeMenu"> 
-            <router-link to="/">
-              currency
-            </router-link>
+            <!-- <router-link to="/currency"> -->
+              <a href="">currency</a>
+            <!-- </router-link> -->
           </li>
           <li @click="closeMenu">
-            <a href="#">favorite</a>
+            <router-link to="/fav"> 
+            favorite
+            </router-link> 
           </li>
         </ul>
       </nav>
@@ -79,7 +81,9 @@ li{
 .header {
   background-color: var(--Green-primary);
   margin-bottom: 25px !important;
-  padding: 10px 40px !important;
+  padding: 15px 40px !important;
+  box-shadow: 5px 3px 2px 2px rgba(0, 0, 0, 0.5);
+
 }
 
 .container-header {
@@ -89,7 +93,10 @@ li{
 }
 
 .nav {
+  position: relative;
   display: flex;
+  background-color: var(--Green-primary) !important;
+  top: 0px !important;
 }
 
 .nav-links {
@@ -97,12 +104,14 @@ li{
   gap: 10px;
   list-style: none;
   justify-content: flex-end;
+  
 }
 
 .nav-links li {
-  font-size: 1rem;
+  font-size: 1.3rem;
   text-transform: uppercase;
   color: var(--White-primary);
+  
 }
 
 .nav-links a {
@@ -139,6 +148,14 @@ li{
   transform: translateY(-8px) rotate(-45deg);
 }
 
+
+
+@media (max-width: 500px) {
+  .nav {
+    top: 50px !important;
+  }
+  }
+
 @media (max-width: 767px) {
   .nav {
     position: absolute;
@@ -149,6 +166,7 @@ li{
     flex-direction: column;
     align-items: center;
     display: none;
+
   }
 
   .nav.open {

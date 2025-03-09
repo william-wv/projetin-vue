@@ -22,7 +22,9 @@ async function getAllStocks() {
   try {
     const result = await getStocks();
     acoes.value = result.filter(stock =>
-      stock.sector === 'Finance' || stock.sector === 'Retail Trade'
+      stock.sector === 'Finance' || 
+      stock.sector === 'Retail Trade' || 
+      stock.sector === 'Energy Minerals'
     );
   } catch (error) {
     console.error('Erro ao buscar ações:', error);
@@ -49,6 +51,8 @@ const filtroActions = computed(() => {
     return acoes.value.filter(stock => stock.sector === 'Retail Trade');
   } else if (props.sector === "Finance") {
     return acoes.value.filter(stock => stock.sector === 'Finance');
+  }  else if (props.sector === "Energy Minerals") {
+    return acoes.value.filter(stock => stock.sector === 'Energy Minerals');
   } else {
     return acoes.value;
   }
@@ -88,13 +92,14 @@ onMounted(() => {
         <h1>
           <span :class="{
             green: sector === 'Finance',
-            blue: sector === 'Retail Trade'
+            blue: sector === 'Retail Trade',
+            yellow: sector === 'Energy Minerals'
           }">
             {{ sector }}
           </span>
         </h1>
         <div>
-          
+
           <div class="container-card__stocks">
             <CardStocks v-for="acao in acoesPaginadas" :key="acao.stock" :name="acao.name" :stock="acao.stock"
               :logo="acao.logo" :sector="acao.sector" :market_cap="acao.market_cap" />
@@ -104,8 +109,9 @@ onMounted(() => {
 
       <!-- Controles de Paginação -->
       <div class="paginacao">
+        
         <button class="btn-green" @click="mudarPagina(paginaAtual - 1)" :disabled="paginaAtual === 1">anterior</button>
-
+        <span class="paginas">Página {{ paginaAtual }} de {{ totalPaginas }}</span>
         <button class="btn-green" @click="mudarPagina(paginaAtual + 1)"
           :disabled="paginaAtual === totalPaginas">proximo</button>
       </div>
@@ -130,6 +136,18 @@ h1 {
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   padding: 10px;
+}
+
+@media (max-width:350px) {
+  main{
+    padding: 20px !important;
+  }
+  .paginas {
+    font-size: 0.7rem !important;
+  }
+  .paginacao{
+    padding: 10px  0 10px 0!important;
+  }
 }
 
 @media (min-width: 500px) {

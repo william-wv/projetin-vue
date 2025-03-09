@@ -10,7 +10,7 @@ export async function getStocks() {
   // https://brapi.dev/api/quote/list?token=f5ekskn8wH7rRG87RGDPwK
     try {
         const response = await api.get(`quote/list?token=${token}`);
-        return response.data.stocks.splice(0, 100); 
+        return response.data.stocks.splice(0,1000); 
     } catch (error) {
         console.error('Erro ao buscar todas as ações:', error);
         throw error;

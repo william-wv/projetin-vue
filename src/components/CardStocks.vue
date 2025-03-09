@@ -51,24 +51,38 @@ function formatarMarketCap(valor) {
     </div>
     <div class="div-ul">
       <ul>
-        <li>{{ name }}</li>
-        <li>{{ stock }}</li>
-        <li>
+        <li>Nome: {{ name }}</li>
+        <li>Moeda: {{ stock }}</li>
+        <li> Setor:
           <span :class="{
             green: sector === 'Finance',
-            blue: sector === 'Retail Trade'
+            blue: sector === 'Retail Trade',
+            yellow: sector === 'Energy Minerals'
           }">{{ sector }}</span> 
         </li>
-        <li>{{ formatarMarketCap(market_cap)  }}</li>
+        <li>Valor de mercado: <br> {{ formatarMarketCap(market_cap)  }}</li>
       </ul>
+      <img class="fav" src="./icons/copas.png" alt="">
     </div>
   </div>
 </template>
 
 <style scoped>
 
+
+
+  .fav {
+    padding: 3px !important;
+    border-radius: 50% !important;
+    position: absolute;
+    top: 90%;
+    right: 10px;
+    width: 20px !important;
+    cursor: pointer;
+  }
+
 .cardStocks{
-    box-shadow: 5px 3px 4px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 5px 3px 4px 2px rgba(0, 0, 0, 0.4);
     border: none;
     margin: 10px !important;
     background-color: var(--Gray-300);
@@ -93,5 +107,9 @@ function formatarMarketCap(valor) {
   }
 }
 
-
+@media (max-width: 350px) {
+  .cardStocks {
+    margin: 0px !important;
+  }
+}
 </style>

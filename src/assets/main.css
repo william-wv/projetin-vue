@@ -30,5 +30,10 @@ main{
   color: var(--Green-primary) !important;
 }
 .blue {
-  color: blue;
+color: blue ;
+}
+
+.yellow {
+  color: yellow;
+  
 }

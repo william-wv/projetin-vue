@@ -7,13 +7,18 @@ defineProps({
 </script>
 
 <template>
-  <div>
     <h1>Stocks available</h1>
-
-    <!-- Primeira instância de SectionStocks com setor 'Finance' -->
+  
     <SectionStocks :sector="'Finance'" />
 
-    <!-- Segunda instância de SectionStocks com setor 'Retail Trade' -->
     <SectionStocks :sector="'Retail Trade'" />
-  </div>
+
+    <SectionStocks :sector="'Energy Minerals'" />
 </template>
+
+<style scoped>
+  h1{
+    margin: 50px 0 0 0 !important;
+    text-align: center;
+  }
+</style>
