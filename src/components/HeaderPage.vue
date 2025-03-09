@@ -59,7 +59,7 @@ export default {
           </li>
           <li @click="closeMenu"> 
             <!-- <router-link to="/currency"> -->
-              <a href="">currency</a>
+              <a>currency</a>
             <!-- </router-link> -->
           </li>
           <li @click="closeMenu">

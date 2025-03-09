@@ -76,6 +76,8 @@ function mudarPagina(novaPagina) {
   }
 }
 
+  
+
 // Chamada inicial para carregar as ações
 onMounted(() => {
   getAllStocks();
@@ -101,7 +103,9 @@ onMounted(() => {
         <div>
 
           <div class="container-card__stocks">
-            <CardStocks v-for="acao in acoesPaginadas" :key="acao.stock" :name="acao.name" :stock="acao.stock"
+            <CardStocks 
+
+            v-for="acao in acoesPaginadas" :key="acao.stock" :name="acao.name" :stock="acao.stock"
               :logo="acao.logo" :sector="acao.sector" :market_cap="acao.market_cap" />
           </div>
         </div>
