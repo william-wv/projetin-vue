@@ -5,7 +5,7 @@ import SectionStocks from '@/components/SectionStocks.vue';
 
 <template>
   <SectionHome :image="'/company.jpg'" :desc="'foto da sede da empresa'"
-    :title="'Life Balance - O equilibrio de suas finansas'"
+    :title="'Life Balance - O equilibrio de suas financas'"
     :paragraph="'A Life Balance ajuda você a organizar suas finanças e investir com inteligência. Com ferramentas práticas, oferecemos insights para economizar, aumentar seu capital e alcançar estabilidade financeira. Simplifique sua vida e conquiste um futuro seguro!'" />
 
 
