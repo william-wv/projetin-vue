@@ -1,7 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
 import HomeView from '../views/HomeView.vue'
 import StockView from '../views/StocksView.vue'
 import FavoriteView from '../views/FavoriteView.vue'
+import FundView from '@/views/FundView.vue'
+import BrdView from '@/views/BrdView.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL)
@@ -22,6 +26,21 @@ const router = createRouter({
       name: 'favorites',
       component: FavoriteView
     },
+    {
+      path:'/fund',
+      name: 'fundos',
+      component: FundView,
+    },
+    {
+      path: '/brd',
+      name: 'brd',
+      component: BrdView,
+    }
+    // {
+    //   path: '/:notFound(.*)',
+    //   name: 'notFound',
+    //   component: () => import('../views/NotFoundView.vue')
+    // }
   ],
 })
 

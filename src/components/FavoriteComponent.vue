@@ -65,7 +65,7 @@ watch(
             <ul>
               <li>{{ acao.name }} ({{ acao.stock }})</li>
               <li>Setor: {{ acao.sector }}</li>
-              <li>Valor de Mercado: {{ formatarMarketCap(acao.market_cap) }}</li>
+              <li>Valor de Mercado: <br>  {{ formatarMarketCap(acao.market_cap) }}</li>
             </ul>
             <!-- Botão para remover -->
             <div class="button-rmv">
@@ -130,11 +130,39 @@ watch(
     justify-content: flex-end; 
     padding-right: 10px !important;
   }
+}
 
-  @media (max-width: 350px) {
-    .cardStocks {
+@media (min-width: 320px) {
+  .container-card__stocks {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (min-width: 420px) {
+  .container-card__stocks {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cardStocks {
       margin: 0px !important;
     }
+}
+
+@media (min-width: 700px) {
+  .container-card__stocks {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1020px) {
+  .container-card__stocks {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1420px) {
+  .container-card__stocks {
+    grid-template-columns: repeat(5, 1fr);
+    width: 100%;
   }
 }
 </style>

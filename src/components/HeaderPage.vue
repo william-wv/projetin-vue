@@ -5,11 +5,13 @@ export default {
   setup() {
     const isMobile = ref(window.innerWidth < 768);
     const isMenuOpen = ref(false);
+    const isDropdownOpen = ref(false); // Estado para controlar o dropdown
 
     const checkScreenSize = () => {
       isMobile.value = window.innerWidth < 768;
       if (!isMobile.value) {
-        isMenuOpen.value = false; 
+        isMenuOpen.value = false;
+        isDropdownOpen.value = false;
       }
     };
 
@@ -17,8 +19,13 @@ export default {
       isMenuOpen.value = !isMenuOpen.value;
     };
 
+    const toggleDropdown = () => {
+      isDropdownOpen.value = !isDropdownOpen.value;
+    };
+
     const closeMenu = () => {
       isMenuOpen.value = false;
+      isDropdownOpen.value = false;
     };
 
     onMounted(() => {
@@ -29,7 +36,7 @@ export default {
       window.removeEventListener("resize", checkScreenSize);
     });
 
-    return { isMobile, isMenuOpen, toggleMenu, closeMenu };
+    return { isMobile, isMenuOpen, toggleMenu, closeMenu, isDropdownOpen, toggleDropdown };
   },
 };
 </script>
@@ -48,24 +55,26 @@ export default {
       <nav :class="{ open: isMenuOpen || !isMobile }" class="nav">
         <ul class="nav-links">
           <li @click="closeMenu">
-            <router-link to="/">
-              home
-            </router-link>
+            <router-link to="/">home</router-link>
+          </li>
+
+          <!-- Dropdown de Stocks -->
+          <li class="dropdown" @click="toggleDropdown">
+            <a>action </a><img class="img" src="../assets/img/drop.png" alt="dropdown">
+            <ul v-if="isDropdownOpen" class="dropdown-menu">
+              <li>
+                <router-link to="/stocks">STOCK</router-link>
+              </li>
+              <li>
+                <router-link to="/fund">FUND</router-link>
+              </li>
+              <li>
+                <router-link to="/brd">BDR</router-link>
+              </li>
+            </ul>
           </li>
           <li @click="closeMenu">
-            <router-link to="/stocks">
-              stocks
-            </router-link>
-          </li>
-          <li @click="closeMenu"> 
-            <!-- <router-link to="/currency"> -->
-              <a>currency</a>
-            <!-- </router-link> -->
-          </li>
-          <li @click="closeMenu">
-            <router-link to="/fav"> 
-            favorite
-            </router-link> 
+            <router-link to="/fav">favorite</router-link>
           </li>
         </ul>
       </nav>
@@ -74,8 +83,13 @@ export default {
 </template>
 
 <style scoped>
-li{
+li {
   color: black !important;
+  position: relative;
+}
+
+.img{
+  width: 20px !important;
 }
 
 .header {
@@ -83,7 +97,6 @@ li{
   margin-bottom: 25px !important;
   padding: 15px 40px !important;
   box-shadow: 5px 3px 2px 2px rgba(0, 0, 0, 0.5);
-
 }
 
 .container-header {
@@ -104,14 +117,12 @@ li{
   gap: 10px;
   list-style: none;
   justify-content: flex-end;
-  
 }
 
 .nav-links li {
   font-size: 1.3rem;
   text-transform: uppercase;
   color: var(--White-primary);
-  
 }
 
 .nav-links a {
@@ -148,13 +159,34 @@ li{
   transform: translateY(-8px) rotate(-45deg);
 }
 
+/* Estilo para o dropdown */
+.dropdown {
+  position: relative;
+  cursor: pointer;
+}
 
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--Green-primary);
+  list-style: none;
+  padding: 10px 0;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-@media (max-width: 500px) {
-  .nav {
-    top: 50px !important;
-  }
-  }
+.dropdown-menu li {
+  padding: 10px;
+  color: white;
+}
+
+.dropdown-menu li:hover {
+  background: var(--Brown);
+}
 
 @media (max-width: 767px) {
   .nav {
@@ -166,7 +198,6 @@ li{
     flex-direction: column;
     align-items: center;
     display: none;
-
   }
 
   .nav.open {
@@ -177,6 +208,13 @@ li{
     flex-direction: column;
     text-align: center;
     padding: 20px 0;
+  }
+
+  .dropdown-menu {
+    position: relative;
+    background: var(--Brown);
+    box-shadow: none;
+    text-align: center;
   }
 }
 </style>

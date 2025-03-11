@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed, onMounted, watchEffect, defineProps } from 'vue';
-import { getStocks } from '@/services/httpService';
+import { getBdr } from '@/services/httpService';
 import CardStocks from "../components/CardStocks.vue";
 
 const acoes = ref([]);
@@ -20,11 +20,10 @@ const props = defineProps({
 
 async function getAllStocks() {
   try {
-    const result = await getStocks();
+    const result = await getBdr();
     acoes.value = result.filter(stock =>
-      stock.sector === 'Finance' || 
-      stock.sector === 'Retail Trade' || 
-      stock.sector === 'Energy Minerals'
+      stock.sector === 'Finance' ||
+      stock.sector === 'Miscellaneous'
     );
   } catch (error) {
     console.error('Erro ao buscar ações:', error);
@@ -47,12 +46,10 @@ function ajustarItensPorPagina() {
 
 // Computed para filtrar as ações com base no setor
 const filtroActions = computed(() => {
-  if (props.sector === "Retail Trade") {
-    return acoes.value.filter(stock => stock.sector === 'Retail Trade');
+  if (props.sector === "Miscellaneous") {
+    return acoes.value.filter(stock => stock.sector === 'Miscellaneous');
   } else if (props.sector === "Finance") {
     return acoes.value.filter(stock => stock.sector === 'Finance');
-  }  else if (props.sector === "Energy Minerals") {
-    return acoes.value.filter(stock => stock.sector === 'Energy Minerals');
   } else {
     return acoes.value;
   }
@@ -76,8 +73,6 @@ function mudarPagina(novaPagina) {
   }
 }
 
-  
-
 // Chamada inicial para carregar as ações
 onMounted(() => {
   getAllStocks();
@@ -94,8 +89,8 @@ onMounted(() => {
         <h1>
           <span :class="{
             green: sector === 'Finance',
-            blue: sector === 'Retail Trade',
-            yellow: sector === 'Energy Minerals'
+            blue: sector === 'Miscellaneous',
+            yellow: sector === 'Technology Services'
           }">
             {{ sector }}
           </span>
@@ -103,16 +98,14 @@ onMounted(() => {
         <div>
 
           <div class="container-card__stocks">
-            <CardStocks 
-
-            v-for="acao in acoesPaginadas" :key="acao.stock" :name="acao.name" :stock="acao.stock"
+            <CardStocks v-for="acao in acoesPaginadas" :key="acao.stock" :name="acao.name" :stock="acao.stock"
               :logo="acao.logo" :sector="acao.sector" :market_cap="acao.market_cap" />
           </div>
         </div>
       </div>
 
       <div class="paginacao">
-        
+
         <button class="btn-green" @click="mudarPagina(paginaAtual - 1)" :disabled="paginaAtual === 1">anterior</button>
         <span class="paginas">Página {{ paginaAtual }} de {{ totalPaginas }}</span>
         <button class="btn-green" @click="mudarPagina(paginaAtual + 1)"
@@ -142,14 +135,16 @@ h1 {
 }
 
 @media (max-width:350px) {
-  main{
+  main {
     padding: 20px !important;
   }
+
   .paginas {
     font-size: 0.7rem !important;
   }
-  .paginacao{
-    padding: 10px  0 10px 0!important;
+
+  .paginacao {
+    padding: 10px 0 10px 0 !important;
   }
 }
 

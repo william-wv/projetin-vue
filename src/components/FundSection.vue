@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed, onMounted, watchEffect, defineProps } from 'vue';
-import { getStocks } from '@/services/httpService';
+import { getFund } from '@/services/httpService';
 import CardStocks from "../components/CardStocks.vue";
 
 const acoes = ref([]);
@@ -20,11 +20,10 @@ const props = defineProps({
 
 async function getAllStocks() {
   try {
-    const result = await getStocks();
+    const result = await getFund();
     acoes.value = result.filter(stock =>
       stock.sector === 'Finance' || 
-      stock.sector === 'Retail Trade' || 
-      stock.sector === 'Energy Minerals'
+      stock.sector === 'Miscellaneous'
     );
   } catch (error) {
     console.error('Erro ao buscar ações:', error);
@@ -47,13 +46,11 @@ function ajustarItensPorPagina() {
 
 // Computed para filtrar as ações com base no setor
 const filtroActions = computed(() => {
-  if (props.sector === "Retail Trade") {
-    return acoes.value.filter(stock => stock.sector === 'Retail Trade');
+  if (props.sector === "Miscellaneous") {
+    return acoes.value.filter(stock => stock.sector === 'Miscellaneous');
   } else if (props.sector === "Finance") {
     return acoes.value.filter(stock => stock.sector === 'Finance');
-  }  else if (props.sector === "Energy Minerals") {
-    return acoes.value.filter(stock => stock.sector === 'Energy Minerals');
-  } else {
+  }  else {
     return acoes.value;
   }
 });
@@ -76,8 +73,6 @@ function mudarPagina(novaPagina) {
   }
 }
 
-  
-
 // Chamada inicial para carregar as ações
 onMounted(() => {
   getAllStocks();
@@ -94,7 +89,7 @@ onMounted(() => {
         <h1>
           <span :class="{
             green: sector === 'Finance',
-            blue: sector === 'Retail Trade',
+            blue: sector === 'Miscellaneous',
             yellow: sector === 'Energy Minerals'
           }">
             {{ sector }}

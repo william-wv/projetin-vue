@@ -74,7 +74,7 @@ watch(
       </ul>
       <div class="button-rmv">
         <button @click="favoritesStore.toggleFavorito({ name, stock, logo, sector, market_cap })" class="fav-btn">
-          {{ favoritesStore.isFavorito(stock) ? ' Favoritado' : 'Favoritar' }}
+          {{ favoritesStore.isFavorito(stock) ? 'Favoritado' : 'Favoritar' }}
         </button>
       </div>
 
