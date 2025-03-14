@@ -11,7 +11,7 @@ function formatarMarketCap(valor) {
       style: 'currency',
       currency: 'USD',
       minimumFractionDigits: 2,
-      maximumFractionDigits: 3
+      maximumFractionDigits: 2
     }).format(valor / 1_000_000_000) + ' Bi';
   } else if (valor >= 1_000_000) {
     return new Intl.NumberFormat('en-US', {
@@ -51,8 +51,6 @@ watch(
 
 <template>
   <main>
-
-
     <div v-if="favoritesStore.favoritos.length === 0">
       <p>Nenhuma ação favoritada ainda!</p>
     </div>
@@ -65,22 +63,26 @@ watch(
             <ul>
               <li>{{ acao.name }} ({{ acao.stock }})</li>
               <li>Setor: {{ acao.sector }}</li>
+              <li>Type: {{ type }}</li>
               <li>Valor de Mercado: <br>  {{ formatarMarketCap(acao.market_cap) }}</li>
             </ul>
             <!-- Botão para remover -->
             <div class="button-rmv">
-              <button @click="favoritesStore.toggleFavorito(acao)">❌ Remover</button>
+              <button @click="favoritesStore.toggleFavorito(acao)">Remover</button>
             </div>
 
           </div>
         </li>
       </ul>
     </div>
-
   </main>
 </template>
 
 <style scoped>
+
+main{
+  margin-bottom: 100px !important;
+}
 .container-card__stocks {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

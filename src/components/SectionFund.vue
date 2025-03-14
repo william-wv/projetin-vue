@@ -16,6 +16,7 @@ const props = defineProps({
   logo: String,
   sector: String,
   market_cap: Number,
+  type: String
 })
 
 async function getAllStocks() {
@@ -90,7 +91,6 @@ onMounted(() => {
           <span :class="{
             green: sector === 'Finance',
             blue: sector === 'Miscellaneous',
-            yellow: sector === 'Energy Minerals'
           }">
             {{ sector }}
           </span>
@@ -101,7 +101,7 @@ onMounted(() => {
             <CardStocks 
 
             v-for="acao in acoesPaginadas" :key="acao.stock" :name="acao.name" :stock="acao.stock"
-              :logo="acao.logo" :sector="acao.sector" :market_cap="acao.market_cap" />
+              :logo="acao.logo" :sector="acao.sector" :market_cap="acao.market_cap" :type="acao.type" />
           </div>
         </div>
       </div>

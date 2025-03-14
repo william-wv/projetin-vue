@@ -14,7 +14,7 @@ import SectionStocks from '@/components/SectionStocks.vue';
     :paragraph="'Descubra as melhores estratégias para fazer seu dinheiro crescer com segurança. Na Life Balance, ajudamos você a investir com inteligência e alcançar a estabilidade financeira que sempre desejou!'" />
   <div class="actions">
     <h2> Veja algumas das ações que recomendamos</h2>
-    <SectionStocks />
+    <SectionStocks/>
   </div>
 </template>
 

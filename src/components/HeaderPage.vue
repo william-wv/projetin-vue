@@ -1,45 +1,40 @@
-<script>
+<script setup>
 import { ref, onMounted, onUnmounted } from "vue";
 
-export default {
-  setup() {
-    const isMobile = ref(window.innerWidth < 768);
-    const isMenuOpen = ref(false);
-    const isDropdownOpen = ref(false); // Estado para controlar o dropdown
+const isMobile = ref(window.innerWidth < 768);
+const isMenuOpen = ref(false);
+const isDropdownOpen = ref(false); // Estado para controlar o dropdown
 
-    const checkScreenSize = () => {
-      isMobile.value = window.innerWidth < 768;
-      if (!isMobile.value) {
-        isMenuOpen.value = false;
-        isDropdownOpen.value = false;
-      }
-    };
-
-    const toggleMenu = () => {
-      isMenuOpen.value = !isMenuOpen.value;
-    };
-
-    const toggleDropdown = () => {
-      isDropdownOpen.value = !isDropdownOpen.value;
-    };
-
-    const closeMenu = () => {
-      isMenuOpen.value = false;
-      isDropdownOpen.value = false;
-    };
-
-    onMounted(() => {
-      window.addEventListener("resize", checkScreenSize);
-    });
-
-    onUnmounted(() => {
-      window.removeEventListener("resize", checkScreenSize);
-    });
-
-    return { isMobile, isMenuOpen, toggleMenu, closeMenu, isDropdownOpen, toggleDropdown };
-  },
+const checkScreenSize = () => {
+  isMobile.value = window.innerWidth < 768;
+  if (!isMobile.value) {
+    isMenuOpen.value = false;
+    isDropdownOpen.value = false;
+  }
 };
+
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value;
+};
+
+const toggleDropdown = () => {
+  isDropdownOpen.value = !isDropdownOpen.value;
+};
+
+const closeMenu = () => {
+  isMenuOpen.value = false;
+  isDropdownOpen.value = false;
+};
+
+onMounted(() => {
+  window.addEventListener("resize", checkScreenSize);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("resize", checkScreenSize);
+});
 </script>
+
 
 <template>
   <header class="header">

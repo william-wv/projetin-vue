@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SectionStocks from '@/components/FundSection.vue';
+import SectionStocks from '@/components/BrdSection.vue'
 
 defineProps({
   sector: String,

@@ -6,6 +6,7 @@ const props = defineProps({
   logo: String,
   sector: String,
   market_cap: Number,
+  type: String,
 });
 
 function formatarMarketCap(valor) {
@@ -43,19 +44,15 @@ function formatarMarketCap(valor) {
 import { useFavoritesStore } from '@/stores/favorites';
 const favoritesStore = useFavoritesStore();
 
-import { watch } from 'vue';
+import { watch } from 'vue'
 
 watch(
-  () => favoritesStore.favoritos,
-  (newFavoritos) => {
-    console.log("Favoritos atualizados no componente de ações:", newFavoritos);
-  }
+  () => favoritesStore.favoritos
 );
 </script>
 
 <template>
   <div class="card cardStocks">
-
     <div class="img__stocks">
       <img :src="logo" :alt="`Logo da ação de ${name} (${stock})`" width="50px">
     </div>
@@ -63,11 +60,12 @@ watch(
       <ul>
         <li>Nome: {{ name }}</li>
         <li>Moeda: {{ stock }}</li>
+        <li>Type: {{ type }}</li>
         <li> Setor:
           <span :class="{
             green: sector === 'Finance',
-            blue: sector === 'Retail Trade',
-            yellow: sector === 'Energy Minerals'
+            blue: sector === 'Retail Trade' || sector === 'Miscellaneous',
+            yellow: sector === 'Energy Minerals',
           }">{{ sector }}</span>
         </li>
         <li>Valor de mercado: <br> {{ formatarMarketCap(market_cap) }}</li>

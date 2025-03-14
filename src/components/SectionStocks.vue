@@ -16,6 +16,7 @@ const props = defineProps({
   logo: String,
   sector: String,
   market_cap: Number,
+  type: String,
 })
 
 async function getAllStocks() {
@@ -72,7 +73,7 @@ watchEffect(() => {
 function mudarPagina(novaPagina) {
   if (novaPagina >= 1 && novaPagina <= totalPaginas.value) {
     paginaAtual.value = novaPagina;
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // window.scrollTo({ top: 0, behavior: "smooth" });
   }
 }
 
@@ -106,7 +107,7 @@ onMounted(() => {
             <CardStocks 
 
             v-for="acao in acoesPaginadas" :key="acao.stock" :name="acao.name" :stock="acao.stock"
-              :logo="acao.logo" :sector="acao.sector" :market_cap="acao.market_cap" />
+              :logo="acao.logo" :sector="acao.sector" :market_cap="acao.market_cap" :type="acao.type" />
           </div>
         </div>
       </div>
