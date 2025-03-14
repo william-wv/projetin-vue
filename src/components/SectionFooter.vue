@@ -40,7 +40,5 @@ const props = defineProps({
   .name-section{
     margin: 25px 0 !important;
     max-width: 300px;
-    overflow-wrap: break-word;
-    hyphens: auto;
   }
 </style>
