@@ -7,30 +7,31 @@ const props = defineProps({
   sector: String,
   market_cap: Number,
   type: String,
+  volume: Number,
 });
 
 function formatarMarketCap(valor) {
-  if (valor >= 1_000_000_000) {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 3
-    }).format(valor / 1_000_000_000) + ' Bi';
-  } else if (valor >= 1_000_000) {
+  if (valor >= 1000000000) {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
       minimumFractionDigits: 2,
       maximumFractionDigits: 2
-    }).format(valor / 1_000_000) + ' Mi';
-  } else if (valor >= 1_000) {
+    }).format(valor / 1000000000) + ' Bi';
+  } else if (valor >= 1000000) {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
       minimumFractionDigits: 2,
       maximumFractionDigits: 2
-    }).format(valor / 1_000) + ' K';
+    }).format(valor / 1000000) + ' Mi';
+  } else if (valor >= 1000) {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(valor / 1000) + ' K';
   } else {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -39,7 +40,7 @@ function formatarMarketCap(valor) {
       maximumFractionDigits: 2
     }).format(valor);
   }
-};
+}
 
 import { useFavoritesStore } from '@/stores/favorites';
 const favoritesStore = useFavoritesStore();
@@ -63,6 +64,7 @@ const favoritesStore = useFavoritesStore();
           }">{{ sector }}</span>
         </li>
         <li>Valor de mercado: <br> {{ formatarMarketCap(market_cap) }}</li>
+        <li>Volume: {{ volume }}</li>
       </ul>
       <div class="button-rmv">
         <button @click="favoritesStore.toggleFavorito({ name, stock, logo, sector, market_cap })" class="fav-btn">

@@ -3,7 +3,7 @@ import { ref, onMounted, onUnmounted } from "vue";
 
 const isMobile = ref(window.innerWidth < 768);
 const isMenuOpen = ref(false);
-const isDropdownOpen = ref(false); // Estado para controlar o dropdown
+const isDropdownOpen = ref(false);
 
 const checkScreenSize = () => {
   isMobile.value = window.innerWidth < 768;
@@ -52,7 +52,6 @@ onUnmounted(() => {
           <li @click="closeMenu">
             <router-link to="/">home</router-link>
           </li>
-
           <!-- Dropdown de Stocks -->
           <li class="dropdown" @click="toggleDropdown">
             <a>action </a><img class="img" src="../assets/img/drop.png" alt="dropdown">
@@ -65,6 +64,9 @@ onUnmounted(() => {
               </li>
               <li>
                 <router-link to="/brd">BDR</router-link>
+              </li>
+              <li>
+                <router-link to="/asc">maiores</router-link>
               </li>
             </ul>
           </li>

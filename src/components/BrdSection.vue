@@ -39,7 +39,7 @@ function ajustarItensPorPagina() {
   } else if (largura <= 768) {
     itensPorPagina.value = 4;
   } else if (largura <= 1024) {
-    itensPorPagina.value = 5;
+    itensPorPagina.value = 4;
   } else {
     itensPorPagina.value = 5;
   }
@@ -163,7 +163,7 @@ h1 {
 
 @media (min-width: 1020px) {
   .container-card__stocks {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 

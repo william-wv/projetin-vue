@@ -5,6 +5,7 @@ import StockView from '../views/StocksView.vue'
 import FavoriteView from '../views/FavoriteView.vue'
 import FundView from '@/views/FundView.vue'
 import BrdView from '@/views/BrdView.vue'
+import AscView from '@/views/AscView.vue'
 
 
 const router = createRouter({
@@ -35,6 +36,10 @@ const router = createRouter({
       path: '/brd',
       name: 'brd',
       component: BrdView,
+    },{
+      path: '/asc',
+      name: 'crescente',
+      component: AscView,
     }
     // {
     //   path: '/:notFound(.*)',

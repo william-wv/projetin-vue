@@ -45,8 +45,6 @@ watch(
   }
 );
 
-
-
 </script>
 
 <template>
@@ -63,7 +61,7 @@ watch(
             <ul>
               <li>{{ acao.name }} ({{ acao.stock }})</li>
               <li>Setor: {{ acao.sector }}</li>
-              <li>Type: {{ type }}</li>
+              <li>Type: {{ acao.type }}</li>
               <li>Valor de Mercado: <br>  {{ formatarMarketCap(acao.market_cap) }}</li>
             </ul>
             <!-- Botão para remover -->
@@ -155,7 +153,7 @@ main{
   }
 }
 
-@media (min-width: 1020px) {
+@media (min-width: 1023px) {
   .container-card__stocks {
     grid-template-columns: repeat(4, 1fr);
   }

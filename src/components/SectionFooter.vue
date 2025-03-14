@@ -41,5 +41,6 @@ const props = defineProps({
   .name-section{
     margin: 25px 0 !important;
     max-width: 400px;
+    padding: 10px !important;
   }
 </style>

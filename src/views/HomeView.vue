@@ -1,9 +1,16 @@
 <script setup>
+
 import SectionHome from '@/components/SectionHome.vue';
 import SectionStocks from '@/components/SectionStocks.vue';
 </script>
 
 <template>
+  <!-- 
+   <div>
+    <SearchComponent/>
+  </div> 
+  -->
+
   <SectionHome :image="'/company.jpg'" :desc="'foto da sede da empresa'"
     :title="'Life Balance - O equilibrio de suas financas'"
     :paragraph="'A Life Balance ajuda você a organizar suas finanças e investir com inteligência. Com ferramentas práticas, oferecemos insights para economizar, aumentar seu capital e alcançar estabilidade financeira. Simplifique sua vida e conquiste um futuro seguro!'" />
@@ -16,6 +23,8 @@ import SectionStocks from '@/components/SectionStocks.vue';
     <h2> Veja algumas das ações que recomendamos</h2>
     <SectionStocks/>
   </div>
+
+  
 </template>
 
 <style scoped>

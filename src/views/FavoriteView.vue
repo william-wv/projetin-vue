@@ -20,6 +20,6 @@ import FavoriteComponent from '@/components/FavoriteComponent.vue';
 <style scoped>
 h1 {
   text-align: center;
-  margin: 80px 0 180px 0 !important;
+  margin: 80px 0 10px 0 !important;
 }
 </style>
