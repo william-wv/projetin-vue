@@ -26,6 +26,7 @@ const props = defineProps({
   h1{
     color: var(--Gray-500);
     font-size: 1.4rem;
+    margin-bottom: 2rem !important;
   }
 
   li{
@@ -39,6 +40,6 @@ const props = defineProps({
   }
   .name-section{
     margin: 25px 0 !important;
-    max-width: 300px;
+    max-width: 400px;
   }
 </style>

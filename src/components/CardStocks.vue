@@ -44,13 +44,7 @@ function formatarMarketCap(valor) {
 import { useFavoritesStore } from '@/stores/favorites';
 const favoritesStore = useFavoritesStore();
 
-import { watch } from 'vue'
-
-watch(
-  () => favoritesStore.favoritos
-);
 </script>
-
 <template>
   <div class="card cardStocks">
     <div class="img__stocks">
