@@ -10,9 +10,15 @@ export default defineConfig({
     vue(),
     vueDevTools(),
   ],
+  test: {
+    environment: "jsdom", // Configura o ambiente para testes Vue
+    globals: true, // Isso garante que o `expect` esteja disponível globalmente
+
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
+    
   },
 })

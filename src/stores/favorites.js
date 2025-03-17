@@ -1,9 +1,12 @@
+// define store serve para armazenamento de estado
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
 export const usefav = defineStore('favorites', () => {
   const favoritos = ref([]);
 
+  // ela verifica isso com o método some, que retorna true se algum item já tiver o mesmo stock,
+  // se o item ainda não estiver no array, ele é adicionado ao final com o push 
   const addFavorito = (item) => {
     if (!favoritos.value.some(fav => fav.stock === item.stock)) {
       favoritos.value.push(item);
