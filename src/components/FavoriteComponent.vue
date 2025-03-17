@@ -1,9 +1,9 @@
 <script setup>
 // import CardStocks from '@/components/CardStocks.vue';
-import { useFavoritesStore } from '@/stores/favorites';
+import { usefav } from '@/stores/favorites';
 import { watch } from 'vue';
 
-const favoritesStore = useFavoritesStore();
+const fav = usefav();
 
 function formatarMarketCap(valor) {
   if (valor >= 1_000_000_000) {
@@ -39,7 +39,7 @@ function formatarMarketCap(valor) {
 
 
 watch(
-  () => favoritesStore.favoritos,
+  () => fav.favoritos,
   (newFavoritos) => {
     console.log("Favoritos atualizados:", newFavoritos);
   }
@@ -49,12 +49,12 @@ watch(
 
 <template>
   <main>
-    <div v-if="favoritesStore.favoritos.length === 0">
+    <div v-if="fav.favoritos.length === 0">
       <p>Nenhuma ação favoritada ainda!</p>
     </div>
     <div v-else>
       <ul class="container-card__stocks">
-        <li v-for="acao in favoritesStore.favoritos" :key="acao.stock">
+        <li v-for="acao in fav.favoritos" :key="acao.stock">
           <!-- Exibindo as informações da ação -->
           <div class="cardStocks">
             <img :src="acao.logo" :alt="`Logo da ação de ${acao.name} (${acao.stock})`" width="50px">
@@ -66,9 +66,8 @@ watch(
             </ul>
             <!-- Botão para remover -->
             <div class="button-rmv">
-              <button @click="favoritesStore.toggleFavorito(acao)">Remover</button>
+              <button @click="fav.toggleFavorito(acao)">Remover</button>
             </div>
-
           </div>
         </li>
       </ul>

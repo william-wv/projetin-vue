@@ -52,7 +52,6 @@ onUnmounted(() => {
           <li @click="closeMenu">
             <router-link to="/">home</router-link>
           </li>
-          <!-- Dropdown de Stocks -->
           <li class="dropdown" @click="toggleDropdown">
             <a>action </a><img class="img" src="../assets/img/drop.png" alt="dropdown">
             <ul v-if="isDropdownOpen" class="dropdown-menu">

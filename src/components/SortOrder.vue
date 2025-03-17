@@ -60,7 +60,7 @@ function ajustarItensPorPagina() {
   } else if (largura <= 1024) {
     itensPorPagina.value = 4;
   } else {
-    itensPorPagina.value = 4;
+    itensPorPagina.value = 5;
   }
 }
 

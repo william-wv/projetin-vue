@@ -42,8 +42,8 @@ function formatarMarketCap(valor) {
   }
 }
 
-import { useFavoritesStore } from '@/stores/favorites';
-const favoritesStore = useFavoritesStore();
+import { usefav } from '@/stores/favorites';
+const favoritesStore = usefav();
 
 </script>
 <template>
